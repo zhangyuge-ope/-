@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="header">
+    <text class="title">随机抽人</text>
+    <text class="subtitle">每次随机抽取一名学生</text>
+  </view>
+
+  <view class="result-area" wx:if="{{selectedName}}">
+    <view class="result-title">抽中学生</view>
+    <view class="result-name {{isRolling ? 'rolling' : ''}}">{{selectedName}}</view>
+  </view>
+
+  <view class="roll-area" wx:else>
+    <view class="placeholder">点击下方按钮开始抽人</view>
+  </view>
+
+  <view class="control-area">
+    <view class="btn start-btn" bindtap="startRollCall" wx:if="{{!isRolling}}">
+      {{selectedName ? '重新抽取' : '开始抽人'}}
+    </view>
+    <view class="btn stop-btn" bindtap="stopRollCall" wx:else>
+      停止
+    </view>
+    
+    <view class="btn secondary-btn" bindtap="selectFromPresent">
+      从已到学生中抽取
+    </view>
+  </view>
+
+  <view class="stats">
+    <text>总人数: {{totalCount}}</text>
+    <text>已到人数: {{presentCount}}</text>
+    <text>剩余未点: {{remainingCount}}</text>
+  </view>
+</view>

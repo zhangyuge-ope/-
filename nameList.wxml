@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="header">
+    <text class="title">名单管理</text>
+    <text class="subtitle">添加、编辑和删除人员</text>
+  </view>
+
+  <view class="input-area">
+    <input 
+      class="name-input" 
+      placeholder="请输入姓名" 
+      value="{{inputName}}" 
+      bindinput="onInputChange"
+      bindconfirm="addName"
+    />
+    <view class="btn add-btn" bindtap="addName">添加</view>
+  </view>
+
+  <view class="import-area">
+    <view class="btn import-btn" bindtap="importNames">批量导入</view>
+    <view class="btn export-btn" bindtap="exportNames">导出名单</view>
+  </view>
+
+  <view class="list-area">
+    <view class="list-header">
+      <text>姓名列表 ({{nameList.length}}人)</text>
+      <text class="clear-all" bindtap="clearAll">清空列表</text>
+    </view>
+
+    <view class="name-list">
+      <view 
+        class="name-item {{item.selected ? 'selected' : ''}}" 
+        wx:for="{{nameList}}" 
+        wx:key="id"
+      >
+        <text class="name-text">{{item.name}}</text>
+        <text class="status {{item.selected ? 'selected' : ''}}">
+          {{item.selected ? '已点' : '未点'}}
+        </text>
+        <view class="actions">
+          <text class="edit" bindtap="editName" data-index="{{index}}">编辑</text>
+          <text class="delete" bindtap="deleteName" data-index="{{index}}">删除</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:if="{{nameList.length === 0}}">
+      名单为空，请添加人员
+    </view>
+  </view>
+</view>

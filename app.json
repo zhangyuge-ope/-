@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/attendance/attendance",
+    "pages/index/index",
+    "pages/nameList/nameList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4a86e8",
+    "navigationBarTitleText": "课堂点名助手",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7a7e83",
+    "selectedColor": "#4a86e8",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/attendance/attendance",
+        "text": "签到"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "随机抽人"
+      },
+      {
+        "pagePath": "pages/nameList/nameList",
+        "text": "名单管理"
+      }
+    ]
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

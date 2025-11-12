@@ -1,0 +1,71 @@
+<view class="container">
+  <view class="header">
+    <text class="title">课堂签到</text>
+    <text class="subtitle">手动记录学生出勤情况</text>
+  </view>
+
+  <view class="stats-area">
+    <view class="stat-item">
+      <text class="stat-number">{{stats.present}}</text>
+      <text class="stat-label">已到</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.absent}}</text>
+      <text class="stat-label">旷课</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.leave}}</text>
+      <text class="stat-label">请假</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.total}}</text>
+      <text class="stat-label">总计</text>
+    </view>
+  </view>
+
+  <view class="control-area">
+    <view class="btn start-btn" bindtap="startAttendance">开始签到</view>
+    <view class="btn reset-btn" bindtap="resetAttendance">重置签到</view>
+  </view>
+
+  <view class="list-area">
+    <view class="list-header">
+      <text>学生名单 ({{nameList.length}}人)</text>
+      <text class="attendance-status">{{attendanceStatus}}</text>
+    </view>
+
+    <view class="student-list">
+      <view 
+        class="student-item {{item.attendance}}" 
+        wx:for="{{nameList}}" 
+        wx:key="id"
+      >
+        <text class="student-name">{{item.name}}</text>
+        <view class="attendance-actions">
+          <text 
+            class="action-btn present {{item.attendance === 'present' ? 'active' : ''}}" 
+            bindtap="markAttendance" 
+            data-id="{{item.id}}" 
+            data-status="present"
+          >已到</text>
+          <text 
+            class="action-btn absent {{item.attendance === 'absent' ? 'active' : ''}}" 
+            bindtap="markAttendance" 
+            data-id="{{item.id}}" 
+            data-status="absent"
+          >旷课</text>
+          <text 
+            class="action-btn leave {{item.attendance === 'leave' ? 'active' : ''}}" 
+            bindtap="markAttendance" 
+            data-id="{{item.id}}" 
+            data-status="leave"
+          >请假</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:if="{{nameList.length === 0}}">
+      名单为空，请先在名单管理中添加学生
+    </view>
+  </view>
+</view>
